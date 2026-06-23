@@ -529,6 +529,19 @@ main {
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   z-index: 1;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  animation: serviceItemIn 0.6s ease both;
+}
+
+.service-item:nth-child(1) { animation-delay: 0s; }
+.service-item:nth-child(2) { animation-delay: 0.1s; }
+.service-item:nth-child(3) { animation-delay: 0.2s; }
+.service-item:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes serviceItemIn {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .service-item::before {
@@ -538,15 +551,57 @@ main {
   background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
+  transition: var(--transition-1);
 }
 
-.service-icon-box { margin-bottom: 10px; }
+.service-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-gradient-yellow-2);
+  border-radius: inherit;
+  z-index: -2;
+  opacity: 0;
+  transition: var(--transition-1);
+}
 
-.service-icon-box img { margin: auto; }
+.service-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-3);
+}
+
+.service-item:hover::after { opacity: 1; }
+
+.service-icon-box {
+  margin-bottom: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  background: var(--bg-gradient-yellow-2);
+  border-radius: 12px;
+  transition: transform 0.35s ease;
+}
+
+.service-item:hover .service-icon-box {
+  transform: rotate(-8deg) scale(1.12);
+}
+
+.service-icon-box img { margin: auto; width: 24px; }
 
 .service-content-box { text-align: center; }
 
 .service-item-title { margin-bottom: 7px; }
+
+.service-item-tags {
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-600);
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+}
 
 .service-item-text {
   color: var(--light-gray);
@@ -1402,6 +1457,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   .service-icon-box {
     margin-bottom: 0;
     margin-top: 5px;
+    margin-inline: 0;
+    flex-shrink: 0;
   }
 
   .service-content-box { text-align: left; }
