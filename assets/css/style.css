@@ -422,12 +422,26 @@ main {
   margin-bottom: 2px;
 }
 
-.contact-info :is(.contact-link, time, address) {
+.contact-info :is(.contact-link, time, address, .contact-text) {
   color: var(--white-2);
   font-size: var(--fs-7);
 }
 
 .contact-info address { font-style: normal; }
+
+.contact-info .contact-link { overflow-wrap: anywhere; }
+
+.icon-box { transition: transform 0.3s ease; }
+
+.icon-box::before { transition: background 0.3s ease; }
+
+.contact-item:hover .icon-box {
+  transform: rotate(-8deg) scale(1.15);
+}
+
+.contact-item:hover .icon-box::before {
+  background: var(--bg-gradient-yellow-2);
+}
 
 .social-list {
   display: flex;
@@ -590,6 +604,11 @@ main {
 }
 
 .service-icon-box img { margin: auto; width: 24px; }
+
+.service-icon-box ion-icon {
+  font-size: 24px;
+  color: var(--orange-yellow-crayola);
+}
 
 .service-content-box { text-align: center; }
 
@@ -1911,12 +1930,10 @@ textarea.form-input::-webkit-resizer { display: none; }
   .contacts-list { grid-template-columns: 1fr; }
 
   .contact-info :is(.contact-link) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
   }
 
-  .contact-info :is(.contact-link, time, address) {
+  .contact-info :is(.contact-link, time, address, .contact-text) {
     --fs-7: 14px;
     font-weight: var(--fw-300);
   }
