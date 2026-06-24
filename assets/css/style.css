@@ -608,6 +608,33 @@ main {
 .service-icon-box ion-icon {
   font-size: 24px;
   color: var(--orange-yellow-crayola);
+  transform-origin: center;
+}
+
+@keyframes iconSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
+}
+
+@keyframes iconBlink {
+  0%, 88%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.1); }
+}
+
+@keyframes iconSweep {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(18deg); }
+}
+
+.service-item:nth-child(1) .service-icon-box ion-icon { animation: iconSpin 4s linear infinite; }
+.service-item:nth-child(2) .service-icon-box ion-icon { animation: iconPulse 1.6s ease-in-out infinite; }
+.service-item:nth-child(3) .service-icon-box ion-icon { animation: iconBlink 3.5s ease-in-out infinite; }
+.service-item:nth-child(4) .service-icon-box ion-icon { animation: iconSweep 1.8s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .service-icon-box ion-icon { animation: none; }
 }
 
 .service-content-box { text-align: center; }
