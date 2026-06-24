@@ -347,11 +347,11 @@ main {
 .info-content .title {
   color: var(--orange-yellow-crayola);
   background: var(--onyx);
-  border: 1px solid var(--jet);
-  font-size: var(--fs-8);
+  border: 1px solid var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
   font-weight: var(--fw-300);
   width: max-content;
-  padding: 3px 12px;
+  padding: 4px 14px;
   border-radius: 8px;
 }
 
@@ -603,14 +603,14 @@ main {
 
 .service-icon-box {
   margin-bottom: 10px;
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-inline: auto;
   background: var(--bg-gradient-yellow-2);
-  border-radius: 12px;
+  border-radius: 14px;
   transition: transform 0.35s ease;
 }
 
@@ -621,7 +621,7 @@ main {
 .service-icon-box img { margin: auto; width: 24px; }
 
 .service-icon-box ion-icon {
-  font-size: 24px;
+  font-size: 30px;
   color: var(--orange-yellow-crayola);
   transform-origin: center;
 }
@@ -638,14 +638,23 @@ main {
   75% { transform: translateX(-2px) rotate(-3deg); }
 }
 
-@keyframes iconAperture {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(0.62) rotate(28deg); }
-}
-
 .service-item:nth-child(1) .service-icon-box ion-icon { animation: iconDrive 1.2s ease-in-out infinite; }
 .service-item:nth-child(2) .service-icon-box ion-icon { animation: iconPulse 1.6s ease-in-out infinite; }
-.service-item:nth-child(3) .service-icon-box ion-icon { animation: iconAperture 1.6s ease-in-out infinite; }
+
+.detect-icon {
+  color: var(--orange-yellow-crayola);
+  overflow: visible;
+}
+
+.detect-target {
+  transform-origin: center;
+  animation: targetLock 1.4s ease-in-out infinite;
+}
+
+@keyframes targetLock {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
 
 .oscilloscope-icon {
   color: var(--orange-yellow-crayola);
@@ -663,7 +672,8 @@ main {
 
 @media (prefers-reduced-motion: reduce) {
   .service-icon-box ion-icon,
-  .oscilloscope-wave {
+  .oscilloscope-wave,
+  .detect-target {
     animation: none;
   }
 }
