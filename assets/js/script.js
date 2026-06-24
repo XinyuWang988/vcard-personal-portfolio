@@ -16,6 +16,55 @@ sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); }
 
 
 
+// typewriter title effect
+const typewriterText = document.querySelector(".typewriter-text");
+
+if (typewriterText) {
+
+  const titles = [
+    "Automotive & Autonomous Systems Engineer",
+    "Embedded AI & IoT Engineer",
+    "Computer Vision Engineer",
+    "Mechanical Engineer"
+  ];
+
+  let titleIndex = 0;
+  let charIndex = titles[0].length;
+  let isDeleting = true;
+
+  const typeLoop = function () {
+    const current = titles[titleIndex];
+    let delay = 60;
+
+    if (isDeleting) {
+      charIndex--;
+      typewriterText.textContent = current.slice(0, charIndex);
+      delay = 35;
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        titleIndex = (titleIndex + 1) % titles.length;
+        delay = 400;
+      }
+    } else {
+      charIndex++;
+      typewriterText.textContent = current.slice(0, charIndex);
+
+      if (charIndex === current.length) {
+        isDeleting = true;
+        delay = 1800;
+      }
+    }
+
+    setTimeout(typeLoop, delay);
+  };
+
+  setTimeout(typeLoop, 1800);
+
+}
+
+
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");

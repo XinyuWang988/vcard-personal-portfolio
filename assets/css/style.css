@@ -345,13 +345,28 @@ main {
 }
 
 .info-content .title {
-  color: var(--white-1);
+  color: var(--orange-yellow-crayola);
   background: var(--onyx);
+  border: 1px solid var(--jet);
   font-size: var(--fs-8);
   font-weight: var(--fw-300);
   width: max-content;
   padding: 3px 12px;
   border-radius: 8px;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: cursorBlink 0.8s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor { animation: none; }
 }
 
 .info_more-btn {
@@ -628,21 +643,29 @@ main {
   50% { transform: scale(0.62) rotate(28deg); }
 }
 
-@keyframes iconPulseWave {
-  0%, 60%, 100% { transform: scaleY(1); }
-  10% { transform: scaleY(1.6); }
-  20% { transform: scaleY(0.6); }
-  30% { transform: scaleY(1.3); }
-  40% { transform: scaleY(0.85); }
-}
-
 .service-item:nth-child(1) .service-icon-box ion-icon { animation: iconDrive 1.2s ease-in-out infinite; }
 .service-item:nth-child(2) .service-icon-box ion-icon { animation: iconPulse 1.6s ease-in-out infinite; }
 .service-item:nth-child(3) .service-icon-box ion-icon { animation: iconAperture 1.6s ease-in-out infinite; }
-.service-item:nth-child(4) .service-icon-box ion-icon { animation: iconPulseWave 2s ease-in-out infinite; }
+
+.oscilloscope-icon {
+  color: var(--orange-yellow-crayola);
+  overflow: visible;
+}
+
+.oscilloscope-wave {
+  stroke-dasharray: 5 4;
+  animation: oscilloscopeScroll 1s linear infinite;
+}
+
+@keyframes oscilloscopeScroll {
+  to { stroke-dashoffset: -18; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .service-icon-box ion-icon { animation: none; }
+  .service-icon-box ion-icon,
+  .oscilloscope-wave {
+    animation: none;
+  }
 }
 
 .service-content-box { text-align: center; }
