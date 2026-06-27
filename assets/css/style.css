@@ -535,6 +535,11 @@ main {
 
 .about-text p { margin-bottom: 15px; }
 
+.about-text strong {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-600);
+}
+
 
 
 /**
