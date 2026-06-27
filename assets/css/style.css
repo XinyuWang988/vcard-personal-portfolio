@@ -1963,8 +1963,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .main-content {
-    min-width: 75%;
-    width: 75%;
+    min-width: 0;
+    flex: 1;
     margin: 0;
   }
 
@@ -1979,6 +1979,8 @@ textarea.form-input::-webkit-resizer { display: none; }
     top: 60px;
     max-height: max-content;
     height: 100%;
+    width: 300px;
+    flex-shrink: 0;
     margin-bottom: 0;
     padding-top: 60px;
     z-index: 1;
