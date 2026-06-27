@@ -350,7 +350,8 @@ main {
   border: 1px solid var(--orange-yellow-crayola);
   font-size: var(--fs-7);
   font-weight: var(--fw-300);
-  width: max-content;
+  width: fit-content;
+  max-width: 100%;
   padding: 4px 14px;
   border-radius: 8px;
 }
@@ -1979,7 +1980,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     top: 60px;
     max-height: max-content;
     height: 100%;
-    width: 300px;
+    width: 360px;
     flex-shrink: 0;
     margin-bottom: 0;
     padding-top: 60px;
