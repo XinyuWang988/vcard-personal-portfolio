@@ -553,11 +553,13 @@ main {
 .service-list {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: stretch;
   gap: 20px;
 }
 
 .service-item {
   position: relative;
+  height: 100%;
   background: var(--border-gradient-onyx);
   padding: 20px;
   border-radius: 14px;
