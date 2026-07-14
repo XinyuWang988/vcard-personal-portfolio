@@ -1150,14 +1150,16 @@ main {
 
 .project-item-icon-box ion-icon { --ionicon-stroke-width: 50px; }
 
-.project-img img {
+.project-img img,
+.project-img video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: var(--transition-1);
 }
 
-.project-item > a:hover img { transform: scale(1.1); }
+.project-item > a:hover img,
+.project-item > a:hover video { transform: scale(1.1); }
 
 .project-title,
 .project-category { margin-left: 10px; }
@@ -2086,13 +2088,17 @@ textarea.form-input::-webkit-resizer { display: none; }
   opacity: 1;
 }
 
-.lightbox-content img {
+.lightbox-content img,
+.lightbox-content video {
   display: block;
   max-width: 100%;
   max-height: 85vh;
   border-radius: 14px;
   box-shadow: var(--shadow-5);
 }
+
+.lightbox-content img[hidden],
+.lightbox-content video[hidden] { display: none; }
 
 .lightbox-close-btn {
   position: absolute;

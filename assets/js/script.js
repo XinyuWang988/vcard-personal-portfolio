@@ -149,20 +149,43 @@ for (let i = 0; i < formInputs.length; i++) {
 // project lightbox variables
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImg = document.querySelector("[data-lightbox-img]");
+const lightboxVideo = document.querySelector("[data-lightbox-video-player]");
 const lightboxCloseElems = document.querySelectorAll("[data-lightbox-close]");
 const projectLinks = document.querySelectorAll(".project-item > a");
+
+// reset and hide the lightbox
+const closeLightbox = function () {
+  lightbox.classList.remove("active");
+  lightboxImg.src = "";
+  lightboxImg.hidden = true;
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute("src");
+  lightboxVideo.load();
+  lightboxVideo.hidden = true;
+};
 
 // open lightbox on project click
 for (let i = 0; i < projectLinks.length; i++) {
   projectLinks[i].addEventListener("click", function (event) {
 
-    const img = this.querySelector("img");
-    if (!img) return;
+    const videoSrc = this.dataset.lightboxVideo;
+    const thumb = this.querySelector("img, video");
+    if (!videoSrc && !thumb) return;
 
     event.preventDefault();
 
-    lightboxImg.src = this.dataset.lightboxFull || img.src;
-    lightboxImg.alt = img.alt;
+    if (videoSrc) {
+      lightboxImg.hidden = true;
+      lightboxVideo.hidden = false;
+      lightboxVideo.src = videoSrc;
+      lightboxVideo.play();
+    } else {
+      lightboxVideo.hidden = true;
+      lightboxImg.hidden = false;
+      lightboxImg.src = this.dataset.lightboxFull || thumb.src;
+      lightboxImg.alt = thumb.alt || "";
+    }
+
     lightbox.classList.add("active");
 
   });
@@ -170,17 +193,13 @@ for (let i = 0; i < projectLinks.length; i++) {
 
 // close lightbox
 for (let i = 0; i < lightboxCloseElems.length; i++) {
-  lightboxCloseElems[i].addEventListener("click", function () {
-    lightbox.classList.remove("active");
-    lightboxImg.src = "";
-  });
+  lightboxCloseElems[i].addEventListener("click", closeLightbox);
 }
 
 // close lightbox on Escape key
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape" && lightbox.classList.contains("active")) {
-    lightbox.classList.remove("active");
-    lightboxImg.src = "";
+    closeLightbox();
   }
 });
 
