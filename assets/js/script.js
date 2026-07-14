@@ -178,7 +178,8 @@ for (let i = 0; i < projectLinks.length; i++) {
       lightboxImg.hidden = true;
       lightboxVideo.hidden = false;
       lightboxVideo.src = videoSrc;
-      lightboxVideo.play();
+      const playPromise = lightboxVideo.play();
+      if (playPromise) playPromise.catch(function () {});
     } else {
       lightboxVideo.hidden = true;
       lightboxImg.hidden = false;
