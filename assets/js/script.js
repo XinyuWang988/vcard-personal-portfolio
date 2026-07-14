@@ -146,6 +146,46 @@ for (let i = 0; i < formInputs.length; i++) {
 
 
 
+// project lightbox variables
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImg = document.querySelector("[data-lightbox-img]");
+const lightboxCloseElems = document.querySelectorAll("[data-lightbox-close]");
+const projectLinks = document.querySelectorAll(".project-item > a");
+
+// open lightbox on project click
+for (let i = 0; i < projectLinks.length; i++) {
+  projectLinks[i].addEventListener("click", function (event) {
+
+    const img = this.querySelector("img");
+    if (!img) return;
+
+    event.preventDefault();
+
+    lightboxImg.src = this.dataset.lightboxFull || img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add("active");
+
+  });
+}
+
+// close lightbox
+for (let i = 0; i < lightboxCloseElems.length; i++) {
+  lightboxCloseElems[i].addEventListener("click", function () {
+    lightbox.classList.remove("active");
+    lightboxImg.src = "";
+  });
+}
+
+// close lightbox on Escape key
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && lightbox.classList.contains("active")) {
+    lightbox.classList.remove("active");
+    lightboxImg.src = "";
+  }
+});
+
+
+
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
