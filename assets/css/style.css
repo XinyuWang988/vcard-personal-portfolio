@@ -1957,7 +1957,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   main {
-    max-width: 1200px;
+    max-width: 1500px;
     margin-inline: auto;
     display: flex;
     justify-content: center;
@@ -2120,20 +2120,3 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .lightbox-close-btn:hover,
 .lightbox-close-btn:focus { color: var(--orange-yellow-crayola); }
-
-
-
-/**
- * FEATURED PROJECTS
- */
-
-.project-featured .project-img { height: 280px; }
-
-@media (min-width: 768px) {
-  .project-featured { grid-column: span 2; }
-  .project-featured .project-img { height: 320px; }
-}
-
-@media (min-width: 1024px) {
-  .project-featured .project-img { height: 360px; }
-}
